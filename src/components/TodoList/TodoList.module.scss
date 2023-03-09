@@ -1,0 +1,41 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.list {
+    margin-right: 1rem;
+}
+
+.list_blur {
+    filter: blur(2px);
+}
+
+.button {
+    button {
+        width: 2rem;
+        height: 2rem;
+        background-color: aqua;
+        transition: all 0.3s ease-in-out;
+    }
+    span {
+        visibility: hidden;
+        opacity: 0;
+        transition: all 1s ease-in-out;
+        border: 1px solid black;
+        border-radius: 0.3rem;
+        margin-left: 1rem;
+        background-color: black;
+        color: white;
+        padding: 0.3rem;
+    }
+    &:hover {
+        span {
+            visibility: visible;
+            opacity: 1;
+       }
+       button {
+        background-color: green;
+       }
+    } 
+}
