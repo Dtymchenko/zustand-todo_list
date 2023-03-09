@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ListItem.module.scss";
+import { useTodos } from "./../../store";
 
 const ListItem = ({ item, todos, setTodos }) => {
   const [checkbox, setCheckbox] = React.useState(item.completed);
@@ -8,9 +9,7 @@ const ListItem = ({ item, todos, setTodos }) => {
     setCheckbox(!checkbox);
   };
 
-  const handleRemove = (id) => {
-    setTodos([...todos?.filter((item) => item.id !== id)]);
-  };
+  const removeTodo = useTodos((state) => state.removeTodo);
 
   return (
     <div className={styles.wrapper}>
@@ -24,7 +23,7 @@ const ListItem = ({ item, todos, setTodos }) => {
         {item.title}
       </span>
       <span className={styles.input}>
-        <button onClick={() => handleRemove(item.id)}>X</button>
+        <button onClick={() => removeTodo(item.id)}>X</button>
         <span className={`${styles.switch_complete} ${styles.switch_remove}`}>
           Remove ToDo
         </span>

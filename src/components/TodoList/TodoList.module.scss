@@ -1,6 +1,13 @@
 .wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub_wrapper {
+    display: flex;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .list {
@@ -12,6 +19,7 @@
 }
 
 .button {
+        height: 2rem;
     button {
         width: 2rem;
         height: 2rem;
@@ -38,4 +46,28 @@
         background-color: green;
        }
     } 
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    * {
+        text-align: center;
+        line-height: 4rem;
+    }
+    span, .fetch, button {
+    display: inline-block;
+    width: 7rem;
+    height: 4rem;
+    margin-right: 1rem;
+    border: 1px solid grey;
+    border-radius: .4rem;
+    }
+    button {
+        background-color: rgb(189, 146, 146);
+        &:hover {
+            background-color: rgb(65, 128, 184);
+        }
+    }
 }
