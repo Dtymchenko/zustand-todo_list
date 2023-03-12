@@ -18,15 +18,12 @@ const TodoList = () => {
     setAddOpen(!addOpen);
   };
 
-  const closeForm = () => {
-    setAddOpen(false);
-  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.sub_wrapper}>
         <div
-          onClick={closeForm}
+          // onClick={closeForm}
           className={!addOpen ? `${styles.list}` : `${styles.list_blur}`}
         >
           {todos?.map((todo) => (

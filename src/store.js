@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import { nanoid } from "nanoid";
 
 export const useTodos = create(
@@ -8,6 +8,7 @@ export const useTodos = create(
       todos: [],
       addOpen: false,
       error: null,
+      formRef: null,
       addTodo: (title) =>
         set((state) => {
           if (title.trim()) {
@@ -26,8 +27,9 @@ export const useTodos = create(
       //     set((state) => ({
       //       ...state,
       //       addOpen: bool,
-      //     })), - ТАК ТОЖЕ МОЖНО!
+      //     })), - WE CAN DO THIS WAY ALSO!
       setAddOpen: (bool) => set({ addOpen: bool }),
+      setFormRef: (str) => set({ formRef: str }),
       fetchTodos: async () => {
         try {
           const res = await fetch(
@@ -44,15 +46,15 @@ export const useTodos = create(
   )
 );
 
-export const useBearStore = create(
-  persist(
-    (set, get) => ({
-      bears: 0,
-      addABear: () => set({ bears: get().bears + 1 }),
-    }),
-    {
-      name: "food-storage", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
-    }
-  )
-);
+// export const useBearStore = create(
+//   persist(
+//     (set, get) => ({
+//       bears: 0,
+//       addABear: () => set({ bears: get().bears + 1 }),
+//     }),
+//     {
+//       name: "food-storage", // name of the item in the storage (must be unique)
+//       storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+//     }
+//   )
+// );

@@ -4,9 +4,24 @@ import { useTodos } from "./../../store";
 
 const Form = () => {
   const [inputValue, setInputValue] = React.useState("");
-  const addTodo = useTodos((state) => state.addTodo);
-  const setAddOpen = useTodos((state) => state.setAddOpen);
-  const addOpen = useTodos((state) => state.addOpen);
+  const { addTodo, setAddOpen } = useTodos((state) => ({
+    addTodo: state.addTodo,
+    setAddOpen: state.setAddOpen,
+  }));
+
+  const formRef = React.useRef();
+
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (!formRef.current.contains(e.target)) {
+        setAddOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +31,7 @@ const Form = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={formRef} className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
         <input
           autoFocus

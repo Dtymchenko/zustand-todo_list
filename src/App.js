@@ -7,21 +7,8 @@ import { useTodos } from "./store";
 function App() {
   const addOpen = useTodos((state) => state.addOpen);
 
-  // const { addOpen, setAddOpen } = useTodos((state) => ({
-  //   addOpen: state.addOpen,
-  //   setAddOpen: state.setAddOpen,
-  // }));
-
-  // const closeForm = (e) => {
-  //   e.stopPropagation();
-  //   setAddOpen(false);
-  // };
-
   return (
-    <div
-      className="App"
-      //  onClick={closeForm}
-    >
+    <div className="App">
       <span>TESTING ZUSTAND STATE MANAGER ON TODO LIST</span>
       {addOpen && <Form />}
       <TodoList />
